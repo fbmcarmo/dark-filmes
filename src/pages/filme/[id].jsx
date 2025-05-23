@@ -8,7 +8,7 @@ import instance from "@/api/instance";
 
 export default function Filme(){
     const router = useRouter()
-    const { id } = router.query
+    const { id } = router.query || "0"
 
     const [filme, setFilme] = useState({})
 
@@ -41,8 +41,8 @@ export default function Filme(){
                         <div className="w-full h-[90%]">
                             <img
                                 className="w-full h-full rounded-lg object-cover"
-                                src="https://cl.buscafs.com/www.tomatazos.com/public/uploads/images/2879/2879_800x1250.jpg"
-                                alt=""
+                                src={filme.banner}
+                                alt={filme.titulo}
                             />
                         </div>
                         <div className="w-full flex h-[10%] pt-4 justify-between">
@@ -57,28 +57,24 @@ export default function Filme(){
                     </div>
                      <div className="w-[60%] pl-4 h-full flex flex-col">
                         <div className="w-full flex gap-2 items-baseline">
-                            <h1 className="text-[35px] text-[#9B87F5] font-bold">Interstellar</h1>
-                            <p className="text-[#8a898c] font-semibold text-[17px]">(2014)</p>
+                            <h1 className="text-[35px] text-[#9B87F5] font-bold">{filme.titulo}</h1>
+                            <p className="text-[#8a898c] font-semibold text-[17px]">({filme.ano})</p>
                         </div>
                         <div className="w-full gap-4 flex">
                             <div className="py-1 px-4 rounded-2xl bg-[#4ade80]/20 text-[#4ade80]">
-                                <p className="text-[17px]">10/10</p>
+                                <p className="text-[17px]">{filme.nota}/10</p>
                             </div>
                             <div className="py-1 px-4 rounded-2xl bg-[#9b87f5]/20 text-[#9b87f5]">
-                                <p className="text-[17px]">Ficção</p>
+                                <p className="text-[17px]">{filme.genero}</p>
                             </div>
                         </div>
                         <div className="w-full flex flex-col mt-8">
                             <h4 className="font-bold text-[20px]">Diretor</h4>
-                            <p className="text-[#8a898c]">Christopher Edward Nolan</p>
+                            <p className="text-[#8a898c]">{filme.diretor}</p>
                         </div>
                         <div className="w-full flex flex-col mt-8">
                             <h4 className="font-bold text-[20px]">Sinopse</h4>
-                            <p className="text-[#8a898c]">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                 Voluptatum facere cupiditate soluta, consequuntur suscipit aspernatur dignissimos, 
-                                 repudiandae et dolores quos aut repellat quibusdam, harum exercitationem alias. 
-                                 Ipsam id odio voluptas?
-                            </p>
+                            <p className="text-[#8a898c]">{filme.sinopse}</p>
                         </div>
                     </div>
                 </div>
